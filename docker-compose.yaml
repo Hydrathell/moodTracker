@@ -1,0 +1,31 @@
+version: "3"
+services:
+  jenkins:
+    image: docker:dind
+    container_name: jenkins-docker
+    privileged: true
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - swe-mod2-moodtracker_jenkins-docker-certs:/certs/client
+      - swe-mod2-moodtracker_jenkins-data:/var/jenkins_home
+    ports:
+      - "2376:2376"
+  blueocean:
+    image: jenkinsci/blueocean
+    container_name: jenkins-blueocean
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    ports:
+      - "50000:50000"
+      - "8080:8080"
+    volumes:
+      - swe-mod2-moodtracker_jenkins-docker-certs:/certs/client:ro
+volumes:
+  swe-mod2-moodtracker_jenkins-data:
+  swe-mod2-moodtracker_jenkins-docker-certs:
+networks:
+  swe-mod2-moodtracker_default:
+  
