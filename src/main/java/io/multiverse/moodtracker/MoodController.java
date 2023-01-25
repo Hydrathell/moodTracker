@@ -24,7 +24,7 @@ public class MoodController {
     @GetMapping("/moods")
     public String getMoods(Model model, @AuthenticationPrincipal OidcUser principal) {
         model.addAttribute("user", principal.getClaims());
-        model.addAttribute("moods", moodRepo.findAll());
+        model.addAttribute("moods", moodRepo.findByUserId(principal.getName()));
         return "moods";
     }
     
@@ -32,7 +32,7 @@ public class MoodController {
     public String createMood(Model model, Mood mood, @AuthenticationPrincipal OidcUser principal) {
         moodRepo.save(mood);
         model.addAttribute("user", principal.getClaims());
-        model.addAttribute("moods", moodRepo.findAll());
+        model.addAttribute("moods", moodRepo.findByUserId(principal.getName()));
         return "moods";
     }
 }
