@@ -1,5 +1,8 @@
-node {
-    stage 'test' {
-        echo 'gradle test'
+pipeline {
+    agent any
+    stage('Test') {
+        steps {
+            echo 'gradle test'
+        }
     }
 }
