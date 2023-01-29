@@ -11,8 +11,6 @@ pipeline {
                 sh "gradle --version"
             }
         }
-    }
-    stages {
         stage("Test") {
             steps {
                 sh "gradle clean test"
