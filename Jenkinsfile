@@ -7,6 +7,13 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'gradle --version'
+                sh 'gradle clean test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'gradle build'
+                stash includes: '**/build/libs/*.jar', name 'moodtracker_app'
             }
         }
     }
