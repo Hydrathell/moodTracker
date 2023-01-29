@@ -2,6 +2,14 @@ pipeline {
     agent any
     tools {
         gradle "Gradle"
+        jdk "default"
+    }
+    stages {
+        stage("Which Java") {
+            steps {
+                sh "java --version"
+            }
+        }
     }
     stages {
         stage("Test") {
