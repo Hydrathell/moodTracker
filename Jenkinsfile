@@ -1,8 +1,10 @@
 pipeline {
     agent any
-    stage('Test') {
-        steps {
-            echo 'gradle test'
+    stages {
+        stage('Test') {
+            steps {
+                echo 'gradle test'
+            }
         }
     }
 }
