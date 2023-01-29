@@ -1,20 +1,20 @@
 pipeline {
     agent any
     tools {
-        gradle "Gradle"
-        jdk "17"
+        gradle "Gradle 8"
+        jdk "JDK 17"
     }
     stages {
-        stage("Which Java") {
+        stage("Which Versions") {
             steps {
                 sh "java --version"
+                sh "gradle --version"
             }
         }
     }
     stages {
         stage("Test") {
             steps {
-                sh "gradle --version"
                 sh "gradle clean test"
             }
         }
