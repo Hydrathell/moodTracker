@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage("Which Versions") {
             steps {
+                sh "export JAVA_HOME=/var/jenkins_home/tools/hudson.model.JDK/JDK_17/jdk-17.0.6/bin/java"
                 sh "java --version"
                 sh "gradle --version"
             }
