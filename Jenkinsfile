@@ -13,7 +13,7 @@ pipeline {
         stage("Build") {
             steps {
                 sh "gradle build"
-                stash includes: "**/build/libs/*.jar", name "moodtracker_app"
+                stash includes: "build/libs/*.jar", name: "moodtracker_app"
             }
         }
     }
