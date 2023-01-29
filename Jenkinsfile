@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'gradle test'
+                sh 'gradle test'
             }
         }
     }
