@@ -1,12 +1,12 @@
 node {
-    stage 'Test' {
+    stage 'test' {
         sh 'gradle clean test'
     }
-    stage 'Build' {
+    stage 'build' {
         sh 'gradle build'
         stash includes: '**/build/libs/*.jar', name: 'moodtracker'
     }
-    stage 'Deploy' {
+    stage 'deploy' {
         unstash 'moodtracker'
     }
 }
