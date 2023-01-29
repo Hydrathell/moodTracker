@@ -4,16 +4,16 @@ pipeline {
         gradle "Gradle"
     }
     stages {
-        stage('Test') {
+        stage("Test") {
             steps {
-                sh 'gradle --version'
-                sh 'gradle clean test'
+                sh "gradle --version"
+                sh "gradle clean test"
             }
         }
-        stage('Build') {
+        stage("Build") {
             steps {
-                sh 'gradle build'
-                stash includes: '**/build/libs/*.jar', name 'moodtracker_app'
+                sh "gradle build"
+                stash includes: "**/build/libs/*.jar", name "moodtracker_app"
             }
         }
     }
