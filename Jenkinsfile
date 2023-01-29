@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         gradle "Gradle"
-        jdk "default"
+        jdk "17"
     }
     stages {
         stage("Which Java") {
