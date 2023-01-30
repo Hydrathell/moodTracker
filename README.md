@@ -28,7 +28,7 @@ docker-compose up -d
 ```
 
 ```
-docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
+docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 ### Hello World Pipeline
