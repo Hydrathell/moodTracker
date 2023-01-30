@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         gradle "Gradle-8"
+        docker "Docker"
     }
     environment {
         MOD2_AUTH0_CLIENT_ID = credentials("MOD2_AUTH0_CLIENT_ID")
