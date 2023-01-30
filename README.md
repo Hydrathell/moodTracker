@@ -45,3 +45,9 @@ pipeline {
     }
 }
 ```
+
+#### Plugins
+
+Pipeline: Declarative
+Gradle
+Git

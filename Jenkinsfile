@@ -3,6 +3,11 @@ pipeline {
     tools {
         gradle "Gradle-8"
     }
+    environment {
+        MOD2_AUTH0_CLIENT_ID = credentials("MOD2_AUTH0_CLIENT_ID")
+        MOD2_AUTH0_CLIENT_SECRET = credentials("MOD2_AUTH0_CLIENT_SECRET")
+        MOD2_AUTH0_ISSUER = credentials("MOD2_AUTH0_ISSUER")
+    }
     stages {
         stage("Which Versions") {
             steps {
