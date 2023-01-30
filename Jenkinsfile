@@ -7,6 +7,7 @@ pipeline {
         MOD2_AUTH0_CLIENT_ID = credentials("MOD2_AUTH0_CLIENT_ID")
         MOD2_AUTH0_CLIENT_SECRET = credentials("MOD2_AUTH0_CLIENT_SECRET")
         MOD2_AUTH0_ISSUER = credentials("MOD2_AUTH0_ISSUER")
+        DOCKER_CREDENTIALS = credentials("Docker")
     }
     stages {
         stage("Which Versions") {
@@ -20,10 +21,22 @@ pipeline {
                 sh "gradle clean test"
             }
         }
-        stage("Build") {
+        stage("Gradle build") {
             steps {
-                sh "gradle build"
-                // stash includes: "build/libs/*.jar", name: "moodtracker_app"
+                sh "gradle bootJar"
+                stash includes: "build/libs/*.jar", name: "moodtracker_app"
+            }
+        }
+        stage("Docker Auth") {
+            steps {
+                sh 'echo $DOCKER_CREDENTIALS_PSW | sudo docker login -u $DOCKER_CREDENTIALS_USR --password-stdin'
+                echo "docker login"
+            }
+        }
+        stage("Dockerise") {
+            steps {
+                sh "docker build -t bmordan/moodtracker ."
+                sh "docker push bmordan/moodtracker"
             }
         }
     }
