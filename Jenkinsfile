@@ -24,24 +24,21 @@ pipeline {
         stage("Gradle build") {
             steps {
                 sh "gradle bootJar"
-                dir("/tmp") {
-                    stash includes: "build/libs/*.jar", name: "moodtracker_app"
-                }
+                stash includes: "build/libs/*.jar", name: "moodtracker_app"
             }
         }
         stage("Docker Auth") {
             steps {
                 sh 'echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin'
-                echo "docker login"
+                sh "docker --version"
             }
         }
         stage("Dockerise") {
             steps {
-                dir("/tmp") {
-                    unstash "moodtracker_app"
-                    sh 'docker build -t $DOCKER_CREDENTIALS_USR/moodtracker .'
-                    sh 'docker push $DOCKER_CREDENTIALS_USR/moodtracker'
-                }
+                sh 'pwd'
+                unstash "moodtracker_app"
+                sh 'docker build -t $DOCKER_CREDENTIALS_USR/moodtracker .'
+                sh 'docker push $DOCKER_CREDENTIALS_USR/moodtracker'
             }
         }
     }
