@@ -1,0 +1,8 @@
+workflow-aggregator
+git
+gradle
+ssh
+ssh-agent
+docker-plugin
+docker-build-step
+oauth-credentials

@@ -46,8 +46,13 @@ pipeline {
 }
 ```
 
-#### Plugins
+## Notes
+
+[Build a Jenkins with Docker in it](https://medium.com/the-devops-ship/custom-jenkins-dockerfile-jenkins-docker-image-with-pre-installed-plugins-default-admin-user-d0107b582577)
+
+
+#### Plugins to add
 
 Pipeline: Declarative
+Docker Pipeline
 Gradle
-Git
