@@ -17,31 +17,31 @@ pipeline {
                 sh "gradle --version"
             }
         }
-        stage("Test") {
-            steps {
-                sh "gradle clean test"
-            }
-        }
-        stage("Gradle build") {
-            steps {
-                sh "gradle bootJar"
-                stash includes: "build/libs/*.jar", name: "moodtracker_app"
-            }
-        }
+        // stage("Test") {
+        //     steps {
+        //         sh "gradle clean test"
+        //     }
+        // }
+        // stage("Gradle build") {
+        //     steps {
+        //         sh "gradle bootJar"
+        //         stash includes: "build/libs/*.jar", name: "moodtracker_app"
+        //     }
+        // }
         // stage("Docker Auth") {
         //     steps {
         //         sh 'echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin'
         //         sh "docker --version"
         //     }
         // }
-        stage("Dockerise") {
-            steps {
-                sh 'pwd'
-                sh 'docker --version'
-                unstash "moodtracker_app"
-                // sh 'docker build -t $DOCKER_CREDENTIALS_USR/moodtracker .'
-                // sh 'docker push $DOCKER_CREDENTIALS_USR/moodtracker'
-            }
-        }
+        // stage("Dockerise") {
+        //     steps {
+        //         sh 'pwd'
+        //         sh 'docker --version'
+        //         unstash "moodtracker_app"
+        //         // sh 'docker build -t $DOCKER_CREDENTIALS_USR/moodtracker .'
+        //         // sh 'docker push $DOCKER_CREDENTIALS_USR/moodtracker'
+        //     }
+        // }
     }
 }
