@@ -25,10 +25,10 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin'
-                echo 'docker login as $DOCKER_CREDENTIALS_USR'
-                sh 'docker build -t $DOCKER_CREDENTIALS/moodtracker:${env.BUILD_ID} .'
-                sh 'docker push $DOCKER_CREDENTIALS/moodtracker:${env.BUILD_ID}'
+                sh "echo $DOCKER_CREDENTIALS_PSW | docker login -u $DOCKER_CREDENTIALS_USR --password-stdin"
+                echo "docker login as $DOCKER_CREDENTIALS_USR"
+                sh "docker build -t $DOCKER_CREDENTIALS_USR/moodtracker:${env.BUILD_ID} ."
+                sh "docker push $DOCKER_CREDENTIALS_USR/moodtracker:${env.BUILD_ID}"
             }
         }
     }
