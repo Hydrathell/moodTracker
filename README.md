@@ -49,10 +49,16 @@ pipeline {
 ## Notes
 
 [Build a Jenkins with Docker in it](https://medium.com/the-devops-ship/custom-jenkins-dockerfile-jenkins-docker-image-with-pre-installed-plugins-default-admin-user-d0107b582577)
-
+I built `bmordan/jenkins-with-docker` using the `Dockerfile.Jenkins` in this repo
 
 #### Plugins to add
 
 Pipeline: Declarative
 Docker Pipeline
 Gradle
+
+Add docker to cloud in manage jenkins and set the docker host uri on Mac that is:
+
+```
+unix://var/run/docker.sock
+```
