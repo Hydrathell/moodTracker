@@ -48,8 +48,9 @@ pipeline {
 
 ## Notes
 
-[Build a Jenkins with Docker in it](https://medium.com/the-devops-ship/custom-jenkins-dockerfile-jenkins-docker-image-with-pre-installed-plugins-default-admin-user-d0107b582577)
-I built `bmordan/jenkins-with-docker` using the `Dockerfile.Jenkins` in this repo
+* [Build a Jenkins with Docker in it](https://medium.com/the-devops-ship/custom-jenkins-dockerfile-jenkins-docker-image-with-pre-installed-plugins-default-admin-user-d0107b582577)
+* I built `bmordan/jenkins-with-docker` using the `Dockerfile.Jenkins` in this repo
+* https://www.thesunflowerlab.com/jenkins-aws-ec2-instance-ssh/ AWS PEM file
 
 #### Plugins to add
 
@@ -61,4 +62,15 @@ Add docker to cloud in manage jenkins and set the docker host uri on Mac that is
 
 ```
 unix://var/run/docker.sock
+```
+
+## AWS
+
+Get docker on your EC2 instance
+
+```
+sudo yum update -y
+sudo yum install docker -y
+sudo service docker start
+sudo usermod -a -G docker ec2-user
 ```
